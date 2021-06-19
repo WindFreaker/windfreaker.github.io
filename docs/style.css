@@ -1,8 +1,65 @@
+:root {   
+    --background-color: #F9F9FA;
+    --text-color: #363959;
+    --field-color: #FFFFFF;
+    --outline-color: #AAAAAC;
+    
+    --highlight-color-1: #25CBF9;
+    --highlight-color-2: #FC6E22;
+    --highlight-color-3: #28CF75;
+    --highlight-color-4: #9D71FF;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #2A2A2E;
+        --text-color: #EFEFEF;
+        --field-color: #434347;
+        --outline-color: #57575A;
+        
+        --highlight-color-1: #25CBF9;
+        --highlight-color-2: #FC6E22;
+        --highlight-color-3: #28CF75;
+        --highlight-color-4: #9D71FF;
+    }
+}
+
 body {
+	background-color: var(--background-color);
+	color: var(--text-color);
 	margin: 0;
 }
 
-#background {
-	width:100%;
-	height:100%;
+details {
+	border: 1px solid red;
+	border-radius: 10px;
+}
+
+details > summary {
+	background-color: var(--field-color);
+	border-radius: 10px;
+	cursor: pointer;
+	list-style: none;
+	padding: 3em;
+	user-select: none;
+}
+
+/* fixes the shape of the background color when opened */
+details[open] > summary {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+details[open] > p {
+	animation: sweep 0.5s ease-in-out;
+}
+
+@keyframes sweep {
+	0% {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100% {
+		opacity: 1;
+	}
 }
